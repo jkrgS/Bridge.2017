@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Mirabeau Exercise Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            
+            @*Refresh the page{redirect to default}*@
+            <script type="text/javascript">
+                window.setTimeout(function() {
+                        window.location.href = '@Url.Action("List", "Airports")';
+                    },
+                    300000);
+            </script>
+            
+            @*Navigation bar*@
+            <div class="navbar-header">
+                <a class="navbar-brand"> Mirabeau Exercise</a>
+            </div>
+
+            <ul class="nav navbar-nav navbar-left">
+                <li>
+                    @Html.ActionLink("Airports", "List", "AirPorts", new {Airports = "List"},
+                        new {@class = "glyphicon glyphicon-plane"})
+                </li>
+            </ul>
+            
+            @*<ul class="nav navbar-nav navbar-left">
+                <li>
+                    @Html.ActionLink("Airports distances", "Index", "AirPorts", new { Airports = "Distances" },
+                        new { @class = "glyphicon glyphicon-info-sign" })
+                </li>
+            </ul>*@
+
+        </div>
+</nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Mirabeau Exercise Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
